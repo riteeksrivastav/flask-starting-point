@@ -1,12 +1,10 @@
 from flask import Flask
-from flask import Response
 from http import HTTPStatus
 import json
 
 application = Flask(__name__)
-
-@application.route('/ping')
-def ping():
-    return Response(json.dumps({'ping': 'pong'}),
-                status=HTTPStatus.OK,
-                mimetype='application/json')
+    
+from app.handler.ping import ping_module
+from app.handler.user import user_module
+application.register_blueprint(ping_module)
+application.register_blueprint(user_module)
