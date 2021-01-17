@@ -1,5 +1,5 @@
 # Flask Starting Point
-This is a simple microservice based CURD application in Flask. It will be a guide to project structure for flask applications.
+This is a simple microservice based CRUD application in Flask. It will be a guide to project structure for flask applications.
 
 ## Dependencies
 
