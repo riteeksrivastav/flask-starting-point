@@ -24,3 +24,5 @@ class AppConfig:
     # These are the recommended values we are setting according to the sqlalchemy documentation. Ref: https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
+    LOG_LEVEL=environ.get("LOG_LEVEL")
