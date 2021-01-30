@@ -7,6 +7,13 @@ class AppConfig:
     basedir = path.abspath(path.dirname(__file__))
     config_file_path = path.join(basedir, 'development.env')
     
+    env = environ.get("ENV")
+    config_file_path = ""
+    if env == "TEST":
+        config_file_path = path.join(basedir, 'test.env')
+    else:
+        config_file_path = path.join(basedir, 'development.env')
+        
     load_dotenv(config_file_path)
     
     SQLALCHEMY_DATABASE_USERNAME= environ.get("SQLALCHEMY_DATABASE_USERNAME")

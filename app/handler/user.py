@@ -18,7 +18,6 @@ def create_user():
     if name == "" or age == "":
         logger.error('name or age should not be empty')
         return resp.invalid_request('name or age should not be empty'.format(name))
-
     try:
         user_service.create(name, age)
         logger.info('user with name {} has been successfully registered'.format(name))
