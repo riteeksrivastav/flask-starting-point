@@ -18,6 +18,9 @@ install-virtualenv:
 lint:
 	find . -iname "*.py" | egrep -v "venv|pycache|.vscode" | xargs pylint
 
+run-server:
+	gunicorn -b ":5000" wsgi
+
 end-virtualenv:
 	deactivate
 
