@@ -24,7 +24,7 @@ except Exception as e:
 application.logger.info('database initialized successfully')
 
 Migrate(application, db)
-from app.user import db as user_db
+from app.user import db as user_db #this import is for the migration. All the modules should be included which need migration
 
 from app.handler.ping import ping_module
 from app.handler.user import user_module

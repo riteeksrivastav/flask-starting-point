@@ -15,6 +15,6 @@ def invalid_request(error):
 
 
 def internal_server_error(error):
-    return Response(json.dumps({'error': None}),
+    return Response(json.dumps({'error': error}),
                     status=HTTPStatus.INTERNAL_SERVER_ERROR,
                     mimetype='application/json')

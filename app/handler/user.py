@@ -6,16 +6,17 @@ import app.user.exceptions as exceptions
 import json
 import logging
 
-user_module = Blueprint('user_module', __name__, url_prefix='/users')
+user_module = Blueprint('user_module', __name__)
 
-@user_module.route('/', methods=['POST'])
+@user_module.route('/users', methods=['POST'])
 def create_user():
     logger = logging.getLogger('app.handler.user')
     
     #get name, age from request body
     name = request.form.get('name')
     age = request.form.get('age')
-    if name == "" or age == "":
+    
+    if not name or not age:
         logger.error('name or age should not be empty')
         return resp.invalid_request('name or age should not be empty'.format(name))
     try:

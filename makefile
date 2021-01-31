@@ -2,6 +2,11 @@
 .PHONY: all test
 all: test
 
+DB_NAME="flask_starting_point"
+TEST_DB_NAME="test_flask_starting_point"
+DB_PORT=5432
+TEST_DB_PORT=5432
+
 setup:
 	virtualenv venv
 	source venv/bin/activate
@@ -24,19 +29,19 @@ copy-config:
 	cp config/sample.env config/test.env
 
 create-db:
-	createdb -h localhost -p $(SQLALCHEMY_DATABASE_PORT) -U postgres $(SQLALCHEMY_DATABASE_NAME)
+	createdb -h localhost -p $(DB_PORT) -U postgres $(DB_NAME)
 
 drop-db:
-	dropdb -p $(SQLALCHEMY_DATABASE_PORT) --if-exists -Upostgres $(SQLALCHEMY_DATABASE_NAME)
+	dropdb -p $(DB_PORT) --if-exists -Upostgres $(DB_NAME)
 
 migrate:
 	flask db upgrade
 
 test-db-create:
-	createdb -h localhost -p $(SQLALCHEMY_DATABASE_PORT) -U postgres test_flask_starting_point
+	createdb -h localhost -p $(TEST_DB_PORT) -Upostgres $(TEST_DB_NAME)
 
 test-db-drop:
-	dropdb -p $(SQLALCHEMY_DATABASE_PORT) --if-exists -Upostgres test_flask_starting_point
+	dropdb -p $(TEST_DB_PORT) --if-exists -Upostgres $(TEST_DB_NAME)
 
 test-db-migrate:
 	ENV=TEST flask db upgrade
