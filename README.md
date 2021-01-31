@@ -26,6 +26,8 @@ It supports
 1. To start the server locally run `make run-server`
 
 ## Directory Structure
+```
+.
 ├── README.md
 ├── app
 │   ├── __init__.py
@@ -59,6 +61,7 @@ It supports
 │       ├── test_db.py
 │       └── test_service.py
 └── wsgi.py
+```
 
 ## TODO
 * Support monitoring
